@@ -15,7 +15,8 @@ import compilerTools.Token;
 
 
 /* Variables básicas de espacios */
-CaracteresEsp = [-|.|,|;|:|$|@|?|*|¡|¿|!|%|&|/|\|^|~|`|{|}|[|]|<|>|+|=|']
+CaracteresEsp = [-|.|,|;|:|$|@|?|*|¡|¿|!|%|&|/|\^|~|`|{|}|[|]|<|>|+|=|']
+
 TerminadorDeLinea = \r|\n|\r\n
 EntradaDeCaracter = [^\r\n]
 EspacioEnBlanco = {TerminadorDeLinea} | [ \t\f]
@@ -86,7 +87,7 @@ para {return token(yytext(), "PARA", yyline, yycolumn);}
 repetir {return token(yytext(), "REPETIR", yyline, yycolumn);}
 cuando {return token(yytext(), "CUANDO", yyline, yycolumn);}
 
-ciclar{ return token(yytext(), "CICLAR", yyline, yycolumn); }
+ciclar {return token(yytext(), "CICLAR", yyline, yycolumn);}
 desde {return token(yytext(), "DESDE", yyline, yycolumn);}
 hasta {return token(yytext(), "HASTA", yyline, yycolumn);}
 inc {return token(yytext(), "PALABRA_RESERVADA", yyline, yycolumn);}

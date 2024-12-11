@@ -1,47 +1,10 @@
-inicio_programa
-    
-    # Declaración e inicialización de dispositivos
+iniciar {
 
-dispositivos
-    definir dispositivo(sen.sor temperatura , sensor , { tipo : "temperatura"});
-    definir dispositivo(ventilador , actuador , {tipo : "ventilador"}];
-    definir dispositivo(alimentador , actuador , {tipo : "alimentador"});
 
-    configurar(sensor temperatura , {limite inferior : 5 , limite superior : 32});
-    configurar(ventilador , {temperatura encendido : 32 , temperatura apagado : 15});
-    configurar(alimentador , {horariomanana : "08:00", horariotarde : "16:00"});
-fin_dispositivos
+crear #N1 como entero
 
-    # Bucle principal del programa
-    inicio_granja
-        # Lectura de la temperatura actual
-       entero temperatura actual = leer_sensor(sensor temperatura);
-       bool 1infrarrojo foco1 ; 
-        # Control del ventilador según la temperatura
-        si temperatura actual > +32.5
-            encender(ventilador)
-        contrario si temperatura actual < 15 
-            apagar(ventilador)
+funcion $sumar() {
 
-        # Control del alimentador según el horario
-        hora actual = obtener hora actual() ;
-        si hora actual == horario manana 
-            activar alimentador()
-        contrario si hora actual == horario tarde 
-            activar alimentador()
-fin_programa
-        # Esperar un intervalo de tiempo antes de la próxima iteración
-        esperar(1 hora)
+}
 
-    fin_granja
-
-# Función para activar el alimentador
-funcion activar alimentador()
-   	controlar actuador(alimentador , "alimentar") ;
-	fin_funcion
-
-	funcion obtener lectura sensor(sensor temperatura) con_retorno entero
-   	 devuelve leer_sensor(sensor temperatura) ;
-	fin_funcion
-
-fin_programa
+} fin

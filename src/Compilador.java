@@ -53,10 +53,10 @@ public class Compilador extends javax.swing.JFrame {
     }
 
     private void init() {
-        title = "SFARM";
+        title = "SimpleScript";
         setLocationRelativeTo(null);
         setTitle(title);
-        directorio = new Directory(this, jtpCode, title, ".sfarm");
+        directorio = new Directory(this, jtpCode, title, ".ssc");
 
         addWindowListener(new WindowAdapter() {// Cerrar ventana
             @Override
@@ -367,7 +367,7 @@ public class Compilador extends javax.swing.JFrame {
                 if (token == null) {
                     break;
                 }
-                if(token.getLexeme().equals("fin_programa")){
+                if(token.getLexeme().equals("fin")){
                     br = token;
                     num++;
                 }
@@ -440,7 +440,7 @@ public class Compilador extends javax.swing.JFrame {
       boolean b = false;
         for(Token e: tokene){
             if(e.getLexeme().equals("fin_programa")){
-             jtaOutputConsole.append("Error encontrado en la linea: " + e.getLine() +","+ e.getColumn() + "de tipo: error de declaracion de fin_programa "+"\n");
+             jtaOutputConsole.append("Error encontrado en la linea: " + e.getLine() +","+ e.getColumn() + "de tipo: error de declaracion de fin "+"\n");
              b = true;
             }
             if(!b)

@@ -43,19 +43,14 @@ public class TS extends javax.swing.JFrame {
             pa = "Palabra_Reservada";
             switch (palabra) {
                 case "entero":
-                case "cadena":
-                case "hora":    
-                case "evento":
-                case "estructura":
-                case "enumeraciones":
-                case "estados":
+                case "texto":  
                     pa = ""+palabra;
                     break;
-                case "bool":
+                case "booleano":
                     pa = "logico";
                     break;
-                case "float":
-                    pa = "flotante";
+                case "decimal":
+                    pa = "decimal";
                     break;
                 default:
                     break;
@@ -164,23 +159,11 @@ public class TS extends javax.swing.JFrame {
 
     
     private  String[] palabras = new String[]{
-    "float", "entero", "bool", "temperatura", "cadena", "sensor", 
-    "infrarrojo", "hora", "beber", "evento", "alimentar", "encender", "apagar", 
-    "nuevo", "funciona", "inicio_granja", "fin_granja", "edd", 
-    "sdd", "alarma", "detener", "esperar", "configurar", "devuelve",
-    "con_retorno", "definir", "leer_sensor", "si", 
-    "fin_si", "contrario", "contrario_si", "segun", 
-    "caso", "termina", "fin_segun", "para", 
-    "hasta", "incrementa", "fin_para", "fin_funcion", 
-    "mientras", "funcion", "inicio_programa", "fin_programa",
-    "dispositivos", "fin_dispositivos", "estructura", "enumeraciones",
-    "estados", "ventilador", "alimentador",
-    "evento","+","-","*",
-    "/", ">","<","<=",
-    ">=","==","!=","=",
-    ";",";",",","and","or","(",
-    ")","{","}",
-    "#","/"
+"decimal", "entero", "booleano", "texto", 
+"iniciar", "fin", "funcion", "crear", "como", "leer", "mostrar", "raiz", "potencia", "sen", "cos", "tan",
+ "aleatorio", "redondear", "abs", "logn","si", "entonces", "sino", "comparar", "para", "hacer", "mientras",
+ "repetir", "cuando", "ciclar", "desde", "hasta", "inc",".", "+", "-", "*", "/", "%", "=", "==", ">", "<",
+ ">=", "<=", "{", "}", "(", ")", "&", "|", "!", ";", ":", ",", "_", "#", "$"
     };      
     
     public ArrayList<Token> tokens;

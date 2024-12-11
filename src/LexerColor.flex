@@ -15,20 +15,18 @@ TerminadorDeLinea = \r|\n|\r\n
 EntradaDeCaracter = [^\r\n]
 EspacioEnBlanco = {TerminadorDeLinea} | [ \t\f]
 
-ComentarioDeUnaLinea = "#" {EntradaDeCaracter}* {TerminadorDeLinea}?
-ComentarioMultilinea = \*\*\*([^*]|(\*[^*])|(\*\*[^*]))*\*\*\*
-
-
 /* Comentario */
+ComentarioDeUnaLinea = "@"[^\\n]*
+ComentarioMultilinea = "@@".*? "@@" 
 Comentario = {ComentarioDeUnaLinea}|{ComentarioMultilinea}
 
 /* Identificador */
-Letra = [A-Za-z]
+Letra = [A-Za-zñÑ]
 Digito = [0-9]
-Identificador = {Letra}({Letra}|{Digito})*
+Identificador = "#"{Letra}({Letra}|{Digito})*
 
 /* Número */
-Numero = 0 | [1-9][0-9]*
+Numero = ("+"|"-")? {Digito}+ ("." {Digito}+)? 
 %%
 
 /* Comentarios o espacios en blanco */
@@ -39,26 +37,23 @@ Numero = 0 | [1-9][0-9]*
 cadenaTxt = \"[^\"]+\" { return textColor(yychar, yylength(), new Color(144, 231, 44)); }
 
 /* palabras reservadas y tipos de datos*/
-pantalla  | evento | sensor | infrarrojo | hora | beber | evento | alimentar | encender | apagar | nuevo | funciona | 
-temperatura | inicio_granja |fin_granja | false | configurar | devuelve | con_retorno | definir | leer_sensor | si |
-contrario | contrario_si |segun | caso | termina | fin_segun | para | hasta | incrementa | fin_para | fin_funcion |
-mientras | funcion | inicio_programa | fin_programa | dispositivos | fin_dispositivos | 
-enumeraciones | ventilador | alimentador | fin_si { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
+
+iniciar|fin|funcion|crear|como|leer|mostrar|raiz|potencia|sen|cos|tan|aleatorio
+|redondear|abs|logn|si|entonces|sino|comparar|para|hacer|mientras|repetir|cuando
+|ciclar|desde|hasta|inc { return textColor(yychar, yylength(), new Color(0, 0, 255)); }
 
 /* Tipos de datos */
-cadena | bool | entero | float | false | edd | sdd | detener | esperar |
-estructura | estados { return textColor(yychar, yylength(), new Color(255, 99, 188)); }
+decimal | entero | booleano | texto| false | true { return textColor(yychar, yylength(), new Color(255, 99, 188)); }
 
 /* caracteres especiales */
 "." | "+" | "-" | "*" | "/" | "%" { return textColor(yychar, yylength(), new Color(182, 149, 192)); }
 "=" | "==" | ">" | "<" | ">=" | "<=" { return textColor(yychar, yylength(), new Color(192, 0, 191)); }
-"{" | "}" | "(" | ")" | "!" { return textColor(yychar, yylength(), new Color(255, 181, 82)); }
+"{" | "}" | "(" | ")" | "!" | "#" |"$" { return textColor(yychar, yylength(), new Color(255, 181, 82)); }
 
 and | or | not { return textColor(yychar, yylength(), new Color(184, 184, 184 )); }
-";" | ":" | "$" | "," { /* Ignorar */ }
+";" | ":" | "," { /* Ignorar */ }
 
 /* Identificador */
 {Identificador}  { /* Ignorar */ }
-
 
 . { /* Ignorar */ }
